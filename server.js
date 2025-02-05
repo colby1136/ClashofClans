@@ -9,9 +9,9 @@ const io = socketIo(server);
 // Serve static files (including HTML, CSS, JS, etc.)
 app.use(express.static('public'));
 
-// Define the route to serve colby.html
+// Define the route to serve index.html
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/colby.html'); // Serve colby.html
+    res.sendFile(__dirname + '/index.html'); // Serve index.html
 });
 
 // Handle incoming WebSocket connections
