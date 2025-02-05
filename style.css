@@ -1,0 +1,21 @@
+/* Apply a background image to the body */
+body {
+    background-image: url('archerqueenscreaming.jpeg'); /* Replace with your image URL */
+    background-size: cover; /* Make the image cover the entire page */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent repeating the image */
+    font-family: Arial, sans-serif; /* Clean font style */
+    margin: 0;
+    padding: 0;
+    color: white; /* Make the text white for better contrast */
+}
+
+/* Style for the header */
+header {
+    background-color: rgba(0, 0, 0, 0.5); /* Dark transparent background */
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    margin:

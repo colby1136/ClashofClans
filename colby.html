@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic HTML Page</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link to your external CSS file -->
+    <script src="/socket.io/socket.io.js"></script> <!-- Include socket.io client -->
+    <script>
+        // Connect to the WebSocket server
+        var socket = io();
+
+        // Send a message when the form is submitted
+        function sendMessage(event) {
+            event.preventDefault();
+            var message = document.getElementById('message').value;
+            socket.emit('chat message', message); // Emit chat message event
+            document.getElementById('message').value = ''; // Clear input after sending
+        }
+
+        // Listen for new messages and display them
+        socket.on('chat message', function(msg) {
+            var chatBox = document.getElementById('chatBox');
+            var newMessage = document.createElement('p');
+            newMessage.textContent = msg;
+            chatBox.appendChild(newMessage);
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Welcome to My Website</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#chat">Chat</a></li> <!-- Chat link -->
+            </ul>
+        </nav>
+    </header>
+    
+    <section id="home">
+        <h2>Home Section</h2>
+        <p>Clash Of Clans</p>
+    </section>
+
+    <section id="about">
+        <h2>About Section</h2>
+        <p>This is the about section.</p>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Section</h2>
+        <p>This is the contact section.</p>
+    </section>
+
+    <!-- Chat Section -->
+    <section id="chat">
+        <h2>Live Chat</h2>
+        <div id="chatBox" style="height: 300px; overflow-y: scroll; background-color: #f1f1f1; padding: 10px; border-radius: 10px;">
+            <!-- Chat messages will appear here -->
+        </div>
+
+        <form onsubmit="sendMessage(event)">
+            <input type="text" id="message" placeholder="Type your message..." required>
+            <button type="submit">Send</button>
+        </form>
+    </section>
+</body>
+</html>
